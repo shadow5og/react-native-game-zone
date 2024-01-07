@@ -12,16 +12,22 @@ export default function ReviewDetails({
     <View style={globalStyles.container}>
       <Card>
         <Text>{title}</Text>
+        <Text>{body}</Text>
         <View style={styles.rating}>
           <Text>GameZone Rating</Text>
           <Image source={RatingImage[rating]} />
         </View>
-        <Text>{body}</Text>
       </Card>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  rating: { color: "black" },
+  rating: {
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: "#eee",
+  },
 });
