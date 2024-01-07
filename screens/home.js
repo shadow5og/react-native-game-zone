@@ -10,6 +10,7 @@ import { globalStyles } from "../styles/global";
 import { useContext, useState } from "react";
 import { RootLayoutContext } from "../App";
 import Rive from "rive-react-native";
+import Card from "../components/card";
 
 export default function Home({ navigation }) {
   const { onLayoutRootView } = useContext(RootLayoutContext);
@@ -48,7 +49,9 @@ export default function Home({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate("ReviewDetails", item)}
           >
-            <Text style={globalStyles.paragraph}>{item.title}</Text>
+            <Card>
+              <Text style={globalStyles.paragraph}>{item.title}</Text>
+            </Card>
           </TouchableOpacity>
         )}
       />

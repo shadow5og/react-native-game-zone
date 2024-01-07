@@ -1,5 +1,6 @@
-import { Text, StyleSheet, View } from "react-native";
-import { globalStyles } from "../styles/global";
+import { Text, StyleSheet, View, Image } from "react-native";
+import { globalStyles, RatingImage } from "../styles/global";
+import Card from "../components/card";
 
 export default function ReviewDetails({
   navigation,
@@ -9,9 +10,18 @@ export default function ReviewDetails({
 }) {
   return (
     <View style={globalStyles.container}>
-      <Text>{title}</Text>
-      <Text>{rating}</Text>
-      <Text>{body}</Text>
+      <Card>
+        <Text>{title}</Text>
+        <View style={styles.rating}>
+          <Text>GameZone Rating</Text>
+          <Image source={RatingImage[rating]} />
+        </View>
+        <Text>{body}</Text>
+      </Card>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  rating: { color: "black" },
+});

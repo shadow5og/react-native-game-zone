@@ -8,7 +8,12 @@ const Drawer = createDrawerNavigator();
 export default function Navigator() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: "#eee" },
+          headerTintColor: "#444",
+        }}
+      >
         <Drawer.Screen name="Home" component={HomeNav} />
         <Drawer.Screen name="About" component={AboutNav} />
       </Drawer.Navigator>

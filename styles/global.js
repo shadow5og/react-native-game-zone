@@ -1,4 +1,9 @@
 import { StyleSheet } from "react-native";
+import imgRating1 from "../assets/img/rating-1.png";
+import imgRating2 from "../assets/img/rating-2.png";
+import imgRating3 from "../assets/img/rating-3.png";
+import imgRating4 from "../assets/img/rating-4.png";
+import imgRating5 from "../assets/img/rating-5.png";
 
 export const globalStyles = StyleSheet.create({
   container: {
@@ -13,3 +18,11 @@ export const globalStyles = StyleSheet.create({
     fontFamily: "poppins-regular",
   },
 });
+
+export const RatingImage = {
+  1: imgRating1,
+  2: imgRating2,
+  3: imgRating3,
+  4: imgRating4,
+  5: imgRating5,
+};
