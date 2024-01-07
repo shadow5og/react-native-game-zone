@@ -1,7 +1,12 @@
+import { registerRootComponent } from "expo";
 import * as Font from "expo-font";
-import { useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import HomeNav from "./routes/homeStack";
+import { Text, View } from "react-native";
 import Navigator from "./routes/drawer";
+
+export const RootLayoutContext = createContext(null);
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -43,7 +48,11 @@ export default function App() {
     return null;
   }
 
-  return <Navigator onLayoutRootView={onLayoutRootView} />;
+  return (
+    <RootLayoutContext.Provider value={{ onLayoutRootView }}>
+      <Navigator />
+    </RootLayoutContext.Provider>
+  );
 }
 
 const getFonts = () => {
@@ -62,3 +71,5 @@ const getFonts = () => {
     "poppins-black": require("./assets/fonts/poppins/Poppins-Black.ttf"),
   });
 };
+
+registerRootComponent(App);

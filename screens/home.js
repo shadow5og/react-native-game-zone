@@ -7,10 +7,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { globalStyles } from "../styles/global";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { RootLayoutContext } from "../App";
 import Rive from "rive-react-native";
 
-export default function Home({ onLayoutRootView, navigation }) {
+export default function Home({ navigation }) {
+  const { onLayoutRootView } = useContext(RootLayoutContext);
+  console.log(onLayoutRootView);
   const [reviews] = useState([
     {
       title: "Zelda, Breath of Fresh Air",
