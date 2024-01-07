@@ -14,7 +14,7 @@ export default function ReviewDetails({
         <Text>{title}</Text>
         <Text>{body}</Text>
         <View style={styles.rating}>
-          <Text>GameZone Rating</Text>
+          <Text>GameZone Rating: </Text>
           <Image source={RatingImage[rating]} />
         </View>
       </Card>
