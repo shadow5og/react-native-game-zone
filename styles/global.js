@@ -9,13 +9,21 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 40,
   },
   title: { color: "#333", fontFamily: "poppins-black", fontSize: 20 },
   paragraph: {
     marginVertical: 8,
     lineHeight: 20,
     fontFamily: "poppins-regular",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ddd",
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 6,
   },
 });
 

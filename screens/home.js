@@ -5,12 +5,15 @@ import {
   Button,
   FlatList,
   TouchableOpacity,
+  Modal,
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { useContext, useState } from "react";
 import { RootLayoutContext } from "../App";
 import Rive from "rive-react-native";
 import Card from "../components/card";
+import { MaterialIcons } from "@expo/vector-icons";
+import ReviewForm from "./reviewForm";
 
 export default function Home({ navigation }) {
   const { onLayoutRootView } = useContext(RootLayoutContext);
@@ -35,8 +38,31 @@ export default function Home({ navigation }) {
       key: 3,
     },
   ]);
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <View onLayout={onLayoutRootView} style={globalStyles.container}>
+      <Modal visible={modalOpen} animationType="slide">
+        <View
+          style={{ ...{ padding: 40, height: 200 }, ...styles.modalContent }}
+        >
+          <MaterialIcons
+            name="close"
+            size={24}
+            onPress={() => setModalOpen(false)}
+            style={{ ...styles.modalToggle, ...styles.modalClose }}
+          />
+
+          <ReviewForm />
+        </View>
+      </Modal>
+
+      <MaterialIcons
+        name="add"
+        size={24}
+        onPress={() => setModalOpen(true)}
+        style={styles.modalToggle}
+      />
+
       {/* <Rive
         url="https://public.rive.app/community/runtime-files/2195-4346-avatar-pack-use-case.riv"
         artboardName="Avatar 1"
@@ -58,3 +84,16 @@ export default function Home({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  modalToggle: {
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#f2f2f2",
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: "center",
+  },
+  modalClose: { marginTop: 20, marginBottom: 0 },
+  modalContent: { flex: 1 },
+});
