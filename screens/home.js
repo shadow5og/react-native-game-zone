@@ -18,7 +18,7 @@ import ReviewForm from "./reviewForm";
 export default function Home({ navigation }) {
   const { onLayoutRootView } = useContext(RootLayoutContext);
   console.log(onLayoutRootView);
-  const [reviews] = useState([
+  const [reviews, setReviews] = useState([
     {
       title: "Zelda, Breath of Fresh Air",
       rating: 5,
@@ -39,6 +39,12 @@ export default function Home({ navigation }) {
     },
   ]);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const addReview = (review) => {
+    review.key = Math.random().toString();
+    setReviews((currentReviews) => [review, ...currentReviews]);
+    setModalOpen(false);
+  };
   return (
     <View onLayout={onLayoutRootView} style={globalStyles.container}>
       <Modal visible={modalOpen} animationType="slide">
@@ -52,7 +58,7 @@ export default function Home({ navigation }) {
             style={{ ...styles.modalToggle, ...styles.modalClose }}
           />
 
-          <ReviewForm />
+          <ReviewForm addReview={addReview} />
         </View>
       </Modal>
 
