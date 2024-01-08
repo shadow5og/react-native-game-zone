@@ -1,4 +1,4 @@
-import { Button, TextInput, View } from "react-native";
+import { Button, TextInput, View, Text } from "react-native";
 import { globalStyles } from "../styles/global";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -33,7 +33,14 @@ export default function ReviewForm({ addReview }) {
           addReview(values);
         }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit }) => (
+        {({
+          values,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          errors,
+          touched,
+        }) => (
           <View>
             <TextInput
               style={globalStyles.input}
@@ -42,6 +49,10 @@ export default function ReviewForm({ addReview }) {
               onBlur={handleBlur("title")}
               value={values.title}
             />
+
+            <Text style={globalStyles.errorText}>
+              {touched.title && errors.title}
+            </Text>
 
             <TextInput
               multiline
@@ -52,6 +63,10 @@ export default function ReviewForm({ addReview }) {
               value={values.body}
             />
 
+            <Text style={globalStyles.errorText}>
+              {touched.title && errors.body}
+            </Text>
+
             <TextInput
               keyboardType="numeric"
               style={globalStyles.input}
@@ -60,6 +75,10 @@ export default function ReviewForm({ addReview }) {
               onBlur={handleBlur("rating")}
               value={values.rating}
             />
+
+            <Text style={touched.title && globalStyles.errorText}>
+              {errors.rating}
+            </Text>
 
             <Button title="Submit" color="maroon" onPress={handleSubmit} />
           </View>
