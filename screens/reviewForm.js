@@ -1,19 +1,26 @@
-import { StyleSheet, Button, TextInput, View, Text } from "react-native";
+import {
+  StyleSheet,
+  Button,
+  TextInput,
+  View,
+  Text,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { globalStyles } from "../styles/global";
 import { Formik } from "formik";
 
 export default function ReviewForm({ addReview }) {
   const initialValues = {
-    title: "A Game",
-    body: "It is just a game",
-    rating: "0",
+    title: "",
+    body: "",
+    rating: "",
   };
   return (
     <View style={globalStyles.container}>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={(values, { resetForm }) => {
+          resetForm();
           addReview(values);
         }}
       >

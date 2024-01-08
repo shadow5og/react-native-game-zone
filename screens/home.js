@@ -2,10 +2,11 @@ import {
   Text,
   StyleSheet,
   View,
-  Button,
+  TouchableWithoutFeedback,
   FlatList,
   TouchableOpacity,
   Modal,
+  Keyboard,
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { useContext, useState } from "react";
@@ -48,18 +49,20 @@ export default function Home({ navigation }) {
   return (
     <View onLayout={onLayoutRootView} style={globalStyles.container}>
       <Modal visible={modalOpen} animationType="slide">
-        <View
-          style={{ ...{ padding: 40, height: 200 }, ...styles.modalContent }}
-        >
-          <MaterialIcons
-            name="close"
-            size={24}
-            onPress={() => setModalOpen(false)}
-            style={{ ...styles.modalToggle, ...styles.modalClose }}
-          />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View
+            style={{ ...{ padding: 40, height: 200 }, ...styles.modalContent }}
+          >
+            <MaterialIcons
+              name="close"
+              size={24}
+              onPress={() => setModalOpen(false)}
+              style={{ ...styles.modalToggle, ...styles.modalClose }}
+            />
 
-          <ReviewForm addReview={addReview} />
-        </View>
+            <ReviewForm addReview={addReview} />
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       <MaterialIcons
