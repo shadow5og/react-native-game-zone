@@ -12,14 +12,17 @@ export default function ReviewForm({ addReview }) {
     <View style={globalStyles.container}>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => addReview(values)}
+        onSubmit={(values) => {
+          console.log(values);
+          addReview(values);
+        }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (
           <View>
             <TextInput
               style={globalStyles.input}
               placeholder="Review Title"
-              onChange={handleChange("title")}
+              onChangeText={handleChange("title")}
               onBlur={handleBlur("title")}
               value={values.title}
             />
@@ -28,16 +31,16 @@ export default function ReviewForm({ addReview }) {
               multiline
               style={globalStyles.input}
               placeholder="Review Body"
-              onChange={handleChange("body")}
+              onChangeText={handleChange("body")}
               onBlur={handleBlur("body")}
               value={values.body}
             />
 
             <TextInput
-              // keyboardType="numeric"
+              keyboardType="numeric"
               style={globalStyles.input}
               placeholder="Rating (1=5)"
-              onChange={handleChange("rating")}
+              onChangeText={handleChange("rating")}
               onBlur={handleBlur("rating")}
               value={values.rating}
             />
