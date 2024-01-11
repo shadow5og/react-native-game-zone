@@ -40,3 +40,5 @@ eas.json
 # apps
 /android
 /ios
+*.aab
+*.apk
