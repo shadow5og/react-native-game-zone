@@ -11,7 +11,6 @@ import {
 import { globalStyles } from "../styles/global";
 import { useContext, useState } from "react";
 import { RootLayoutContext } from "../App";
-import Rive from "rive-react-native";
 import Card from "../components/card";
 import { MaterialIcons } from "@expo/vector-icons";
 import ReviewForm from "./reviewForm";
@@ -72,12 +71,6 @@ export default function Home({ navigation }) {
         style={styles.modalToggle}
       />
 
-      {/* <Rive
-        url="https://public.rive.app/community/runtime-files/2195-4346-avatar-pack-use-case.riv"
-        artboardName="Avatar 1"
-        stateMachineName="avatar"
-        style={{ width: 400, height: 400 }}
-      /> */}
       <FlatList
         data={reviews}
         renderItem={({ item }) => (
