@@ -2,10 +2,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeNav from "./homeStack";
 import AboutNav from "./aboutStack";
-import { Image, StyleSheet, View, Text, ImageBackground } from "react-native";
+import { Image, StyleSheet, View, Text } from "react-native";
 import HeartLogo from "../assets/img/heart_logo.png";
-import { MaterialIcons } from "@expo/vector-icons";
-import Background from "../assets/img/game_bg.png";
 
 const Drawer = createDrawerNavigator();
 
@@ -24,8 +22,8 @@ export default function Navigator() {
           ),
         }}
       >
-        <Drawer.Screen name="Home" component={HomeNav} />
-        <Drawer.Screen name="About" component={AboutNav} />
+        <Drawer.Screen name="HomeScreen" component={HomeNav} />
+        <Drawer.Screen name="AboutScreen" component={AboutNav} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
